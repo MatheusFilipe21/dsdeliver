@@ -1,0 +1,25 @@
+package com.matheus.f.n.pereira.dsdeliver.services;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.matheus.f.n.pereira.dsdeliver.dto.ProductDTO;
+import com.matheus.f.n.pereira.dsdeliver.entities.Product;
+import com.matheus.f.n.pereira.dsdeliver.repositories.ProductRepository;
+
+@Service
+public class ProductService {
+	
+	@Autowired
+	private ProductRepository repository;
+	
+	@Transactional(readOnly = true)
+	public List<ProductDTO> findAll(){
+		List<Product> list = repository.findAllByOrderByNameAsc();
+		return list.stream().map(product -> new ProductDTO(product)).collect(Collectors.toList());
+	}
+}
