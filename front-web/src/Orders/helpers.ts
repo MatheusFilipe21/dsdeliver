@@ -1,4 +1,3 @@
-import { type } from "os";
 import { Product } from "./types";
 
 export function checkIsSelected(selectedProducts: Product[], product: Product){
