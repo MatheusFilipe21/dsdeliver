@@ -20,7 +20,7 @@ import com.matheus.f.n.pereira.dsdeliver.entities.enums.OrderStatus;
 @Table(name = "tb_order")
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -96,6 +96,14 @@ public class Order implements Serializable {
 
 	public Set<Product> getProducts() {
 		return products;
+	}
+
+	public Double getTotal() {
+		Double sum = 0.0;
+		for (Product product : products) {
+			sum += product.getPrice();
+		}
+		return sum;
 	}
 
 	@Override
