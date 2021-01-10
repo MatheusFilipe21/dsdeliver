@@ -4,10 +4,10 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export default function Header() {
-  
+
   const navigation = useNavigation();
   const handleOnPress = () => {
-      navigation.navigate('Home')
+    navigation.navigate('Home')
   }
 
   return (
